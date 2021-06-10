@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col">
-    <img *ngFor="let item of images">
+    <a>
+    <img *ngFor="let image of images" (click)="addCollage()" [src]='image.src' class="option">
+    <span class=”green-overlay”></span>
+    </a>
   </div>
 </div>
 
@@ -9,13 +12,15 @@
      [ngStyle]="{
        'max-width': '1180px',
        'height': '35rem'
-      }">
+      }"   *ngIf="collage || collage.length > 0"
+      >
   <div class="gallery__image"
-       *ngFor="let image of collage | slice:0:3"
-       [fxFlex]="image.grow + ' ' + image.shrink + ' ' + image.basis"
+       *ngFor="let item of collage"
+       [fxFlex]="item.grow + ' ' + item.shrink + ' ' + item.basis"
        [ngStyle]="{
-          'background': '#fff url(' + image.src + ') no-repeat scroll center center',
+          'background': '#fff url(' + item.src + ') no-repeat scroll center center',
           margin: '0.25rem'
-        }" (click)="addCollage()">
+        }" 
+        >
   </div>
 </div>
