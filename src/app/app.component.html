@@ -1,18 +1,44 @@
+<div class="header" id="myHeader">
+  <h1>Image Grid</h1>
+  <p>Click on the buttons to change the grid view.</p>
+  <!-- <button class="btn" onclick="one()">1</button> -->
+  <button class="btn active" onclick="two()">2</button>
+  <button class="btn" onclick="three()">3</button>
+</div>
+
 <div class="row">
-  <div class="col">
-    <a>
-    <img *ngFor="let image of images" (click)="addCollage()" [src]='image.src' class="option">
-    <span class=”green-overlay”></span>
-    </a>
+  <div class="column">
+    <img *ngFor="let image of images" [src]='image.src' class="option" style="width:100%" (click)="onCollage(image)">
   </div>
 </div>
+
+<!-- <section class="gallery">
+  <div class="gallery__item">
+    <input
+      type="radio"
+      id="img-1"
+      checked
+      name="gallery"
+      class="gallery__selector"
+    />
+    <img
+      class="gallery__img"
+      src="https://i.picsum.photos/id/1015/600/400.jpg"
+      alt=""
+    />
+    <label for="img-1" class="gallery__thumb">
+      <img src="https://i.picsum.photos/id/1015/150/100.jpg" alt="" />
+    </label>
+  </div>
+</section> -->
+
 
 <div class="gallery__container"
      fxLayout="row wrap"
      [ngStyle]="{
        'max-width': '1180px',
        'height': '35rem'
-      }"   *ngIf="collage"
+      }"
       >
   <div class="gallery__image"
        *ngFor="let item of collage"
